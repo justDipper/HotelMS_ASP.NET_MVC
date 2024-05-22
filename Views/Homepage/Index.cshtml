@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using System.Globalization
+
+<div class="card text-dark container my-5 py-5 z-depth-1">
+    <!--Section: Content-->
+    <section>
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center mb-4">
+            <!--Grid column-->
+            <div class="col-md-10">
+                <!--this part is to Enumerate the MODEL will use to this CSHTML  ex. <indexLog>-->
+                @model IEnumerable<HomepageModel>
+                <!-- Inline CSS -->
+                <div class="d-flex justify-content-between">
+                    <h1 class="text-500 text-dark my-3">Request Log</h1>
+
+                    <!-- Search Bar -->
+                    <div class="mb-3">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search for index..." onkeyup="searchTable()">
+                    </div>
+                </div>
+
+
+
+                <table id="booksTable" class="custom-table text-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Book ID</th>
+                            <th scope="col">Customer Id</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">FullName</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Room ID</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Room Status</th>
+                            <th scope="col">Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- This Part is to Display Each content of the Database -->
+                        <!-- all the content is put to varaible "index"" obj -->
+                        @foreach (var index in Model)
+                        {
+                            <tr>
+                                <!-- This Part will Display Each the Content and ther column name ex. index.student_fullname , student_fullname is the column name-->
+                                <th scope="row">@index.bookingId</th>
+                                <td>@index.customerId</td>
+                                <td>@index.username</td>
+                                <td>@index.fullName</td>
+                                <td>@index.gender</td>
+                                <td>@index.roomId</td>
+                                <td>@index.roomPrice</td>
+                                <td>@index.roomStatus</td>
+                                <td>@index.bookingStatus</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </section>
+    <!--Section: Content-->
+</div>

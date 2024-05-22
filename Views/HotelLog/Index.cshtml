@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="card text-dark container my-5 py-5 z-depth-1">
+
+
+    <!--Section: Content-->
+    <section >
+
+
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center mb-4">
+
+            <!--Grid column-->
+            <div class="col-md-10
+">
+                @model IEnumerable<HotelLogModel>
+                <a asp-controller="HotelLog" asp-action="Add" class="btn btn-success d-block mb-3 text-center mx-2 text-decoration-none" type="button">CREATE</a>
+
+                <!-- Inline CSS -->
+                <div class="d-flex justify-content-between">
+                    <h1 class="text-500 text-dark my-3">Boarders Info</h1>
+                    <div class="mb-3">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search for books..." onkeyup="searchTable()">
+                    </div>
+                     </div>
+
+                <table id="booksTable" class="custom-table text-dark">
+                    <thead>
+                        <tr>
+
+                            <th scope="col">Id</th>
+                            <th scope="col">Customer ID</th>
+                            <th scope="col">Room ID</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var users in Model)
+                        {
+                            <tr>
+                                <th scope="row">@users.id</th>
+                                <td>@users.customer_id_fk</td>
+                                <td>@users.room_id_fk</td>
+                                <td>@users.status</td>
+                                <td class="d-flex">
+                                    <a asp-controller="HotelLog" asp-action="Edit" asp-route-id="@users.id" class="btn btn-primary  my-3 text-center mx-2 text-decoration-none" type="button">EDIT</a>
+                                    <a asp-controller="HotelLog" asp-action="Delete" asp-route-id="@users.id" class="btn btn-danger my-3 text-center text-decoration-none" type="button">DELETE</a>
+                                </td>   
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+
+    </section>
+    <!--Section: Content-->
+
+
+</div>
